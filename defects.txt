@@ -1,0 +1,120 @@
+# Принимает на вход текст, делает первую букву заглавной и возвращает этот же текст
+# позитивные тесты
+@pytest.mark.parametrize('text, result', [('sKYPRO', 'SKYPRO')])
+ОР - 'SKYPRO'
+ФР - 'Skypro'
+
+# негативные тесты
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, result', [('', '')])
+ОР - Error
+ФР - ''
+
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, result', [(' ', ' ')])
+ОР - Error
+ФР - ' '
+
+# Принимает на вход текст и удаляет пробелы в начале, если они есть
+# негативные тесты
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, result', [('', '')])
+ОР - Error
+ФР - ''
+
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, result', [(' ', '')])
+ОР - Error
+ФР - ''
+
+# Принимает на вход текст с разделителем и возвращает список строк
+# негативные тесты
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, delim, result', [('', ',', [])])
+ОР - Error
+ФР - []
+
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, delim, result', [(' ', ':', [])])
+ОР - Error
+ФР - []
+
+# Возвращает `True`, если строка содержит искомый символ и `False` - если нет
+# позитивные тесты
+@pytest.mark.parametrize('text, sym, result', [('skypro', '', False)])
+ОР - False
+ФР - True
+
+# негативные тесты
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, sym, result', [('', '', True)])
+ОР - Error
+ФР - True
+
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, sym, result', [(' ', ' ', True)])
+ОР - Error
+ФР - True
+
+# Удаляет все подстроки из переданной строки
+# негативные тесты
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, sym, result', [('', '', '')])
+ОР - Error
+ФР - ''
+
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, sym, result', [(' ', ' ', '')])
+ОР - Error
+ФР - ''
+
+# Возвращает `True`, если строка начинается с заданного символа и `False` - если нет
+# позитивные тесты
+@pytest.mark.parametrize('text, sym, result', [('skypro', '', False)])
+ОР - False
+ФР - True
+
+# негативные тесты
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, sym, result', [('', '', True)])
+ОР - Error
+ФР - True
+
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, sym, result', [(' ', ' ', True)])
+ОР - Error
+ФР - True
+
+# Возвращает `True`, если строка заканчивается заданным символом и `False` - если нет
+# позитивные тесты
+@pytest.mark.parametrize('text, sym, result', [('skypro', '', False)])
+ОР - False
+ФР - True
+
+# негативные тесты
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, sym, result', [('', '', True)])
+ОР - Error
+ФР - True
+
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, sym, result', [(' ', ' ', True)])
+ОР - Error
+ФР - True
+
+# Преобразует список элементов в строку с указанным разделителем
+# негативные тесты
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, join, result', [(['', ''], ',', ',')])
+ОР - Error
+ФР - ','
+
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, join, result', [([' ', ' '], ',', ' , ')])
+ОР - Error
+ФР - ' , '
+
+@pytest.mark.xfail (strict = True)
+@pytest.mark.parametrize('nottext, join, result', [([], ',', '')])
+ОР - Error
+ФР - ''
